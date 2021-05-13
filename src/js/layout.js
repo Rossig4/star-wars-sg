@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
-
 import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
@@ -32,7 +31,7 @@ const Layout = () => {
 						<Route exact path="/personajes/:uid">
 							{/* <Personajes /> */}
 						</Route>
-                        <Route exact path="/planetas/:uid">
+						<Route exact path="/planetas/:uid">
 							{/* <Planetas /> */}
 						</Route>
 						<Route>
