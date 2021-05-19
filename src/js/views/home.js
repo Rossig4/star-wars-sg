@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import React from "react";
-import star from "../../img/star.jpg";
 import "../../styles/home.scss";
-import CardPersonajes from "../component/cardPersonajes";
+import { CardPersonajes } from "../component/cardPersonajes"; // ### AQUI ###
+import { CardPlanets } from "../component/cardPlanetas"; // ### AQUI ###
 import { Context } from "../store/appContext";
 
 export const Home = () => {
@@ -10,22 +9,22 @@ export const Home = () => {
 
 	return (
 		<div className="container">
-			<h1 className="">Personajes></h1>
-			<div className="mt-4 scrolling-wrapper-flexbox">
+			<h1 className="text-white text-justify">Personajes</h1>
+			<div className="mt-4 scrolling-wrapper-flexbox card-deck rounded-top">
 				{store.personajes.map((item, index) => {
 					return (
 						<div key={index}>
-							<CardPersonajes name={item.name} index={index} />;
+							<CardPersonajes name={item.name} uid={index} />
 						</div>
 					);
 				})}
 			</div>
-			<h1 className="">Planetas</h1>
-			<div className="mt-4 scrolling-wrapper-flexbox">
+			<h1 className="text-white text-justify">Planetas</h1>
+			<div className="mt-4 scrolling-wrapper-flexbox card-deck rounded-top">
 				{store.planetas.map((item, index) => {
 					return (
 						<div key={index}>
-							<CardPlanetas name={item.name} index={index} />
+							<CardPlanets name={item.name} uid={index} />
 						</div>
 					);
 				})}

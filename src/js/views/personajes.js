@@ -1,28 +1,35 @@
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
-
-
-
-
+import PropTypes from "prop-types";
 
 export const Personajes = props => {
-    const { store, actions } = useContext(Context);
-    const params = useParams();
-        
-        useEffect(() => {
-            actions.getDetallePersonaje(params.uid);
-        }, []);
+	const { store, actions } = useContext(Context);
+	const params = useParams();
 
-        return (
-            <div className="container d-flex-row bg-negro rounded p-3">
-                <img src="https://picsum.photos/400/400" alt="..." />
-                <div className="d-flex flex-column text-white">
-                    <h2 className="text-center">{store.personajes[params.uid].name}</h2>
-                    <p className="text-center parrafo">
-                        color de ojos: {store.detalle != null ? store.detalle.eye_color : ""}
-                    </p>
-            </div>
-            </div>
-        );
+	useEffect(() => {
+		actions.getDetallePersonajes(params.uid);
+	}, []);
+	const uid = parseInt(params.uid, 10) + 1;
+
+	return (
+		<div className="col-md-5 d-flex justify-content-center">
+			<div className="row no gutters">
+				<div className="container d-flex-row bg-negro rounded p-3">
+					<img src={`https://starwars-visualguide.com/assets/img/characters/${uid}.jpg`} />
+					<div className="d-flex flex-column text-white">
+						<h2 className="text-center">{store.personajes[params.uid].name}</h2>
+						<p className="" />
+						<p>Color de ojos: {store.detalle.eye_color}</p>
+						<p>Color de cabello: {store.detalle.hair_color}</p>
+						<p>Estatura: {store.detalle.height}</p>
+						<p>Año de nacimiento: {store.detalle.birth_year}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+};
+Personajes.propTypes = {
+	match: PropTypes.object
 };

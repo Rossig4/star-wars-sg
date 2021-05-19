@@ -17,21 +17,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			personajes: [],
 			planetas: [],
-			favoritos: []
+			favoritos: [],
+			detalle: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			agregarfavoritos: () => {},
-
-			eliminarfavoritos: () => {
-				let nuevaListaFavoritos = store.favoritos.filter((element, index) => {
-					if (i != index) return element;
-				});
-				setStore({ favoritos: nuevaListaFavoritos });
+			agregarFavoritos: element => {
+				const store = getStore();
+				const nuevoFavoritos = store.favoritos.concat(element);
+				setStore({ favoritos: nuevoFavoritos });
+				console.log(store.favoritos);
 			},
+
+			eliminarFavoritos: Favorito => {
+				const store = getStore();
+				var nuevoFavorito = store.favoritos.filter(favoritos => {
+					return favoritos !== Favorito;
+				});
+				setStore({ favoritos: nuevoFavorito });
+			},
+
 			loadSomeData: async () => {
 				//personajes
 				try {
@@ -57,7 +65,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 				}
 
-				getDetalleDePersonajes();
+				// getDetalleDePersonajes();    #### AQUI ####
 			},
 			changeColor: (index, color) => {
 				//get the store
@@ -73,10 +81,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			getDetalleDePersonajes: async uid => {
+			getDetallePersonajes: async uid => {
 				try {
-					const store = getStore();
-					const res = await fetch("https:swapi.tech/api/people" + uid);
+					const res = await fetch(`https://www.swapi.tech/api/people/${uid}`);
+					const data = await res.json();
+					console.log("AsyncDetalles;", data.result.properties);
+					setStore({
+						detalle: data.result.properties
+					});
+				} catch {}
+			},
+			getDetallePlanetas: async uid => {
+				try {
+					const res = await fetch(`https://www.swapi.tech/api/planets/${uid}`);
 					const data = await res.json();
 					console.log("AsyncDetalles;", data.result.properties);
 					setStore({

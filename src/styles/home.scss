@@ -7,3 +7,11 @@ overflow-x: auto;
 .cardscroll {
 flex: 0 0 auto;
 }
+
+.titulo{
+    font-size: 45px;
+    font-family: fantasy;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
