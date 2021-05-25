@@ -16,7 +16,10 @@ export const Personajes = props => {
 		<div className="col-md-5 d-flex justify-content-center">
 			<div className="row no gutters">
 				<div className="container d-flex-row bg-negro rounded p-3">
-					<img src={`https://starwars-visualguide.com/assets/img/characters/${uid}.jpg`} />
+					<img
+						src={`https://starwars-visualguide.com/assets/img/characters/${uid}.jpg`}
+						style={{ width: "14rem" }}
+					/>
 					<div className="d-flex flex-column text-white">
 						<h2 className="text-center">{store.personajes[params.uid].name}</h2>
 						<p className="" />

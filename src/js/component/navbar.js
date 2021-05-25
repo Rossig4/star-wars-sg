@@ -11,13 +11,13 @@ export const Navbar = () => {
 				<nav className="navbar navbar-light bg-light mb-3">
 					<div className="container">
 						<Link to="/">
-							<img src={Star} width="60" height="40" />
+							<img src={Star} width="60" height="40" border-radius="50px" border="2px" />
 						</Link>
-						<span className="titulo">S T A R W A R S</span>
+						<span className="titulo" />
 					</div>
-					<div className="dropdown show">
+					<div className="dropdown show flex-box ml-auto">
 						<button
-							className="btn btn-secondary dropdown-toggle"
+							className="btn btn-dark dropdown-toggle"
 							type="button"
 							id="dropdownMenuButton"
 							data-toggle="dropdown"

@@ -14,7 +14,7 @@ export const Planetas = props => {
 
 	return (
 		<div className="container d-flex-row bg-negro rounded p-3">
-			<img src={`https://starwars-visualguide.com/assets/img/planets/${uid}.jpg`} />
+			<img src={`https://starwars-visualguide.com/assets/img/planets/${uid}.jpg`} style={{ width: "14rem" }} />
 			<div className="d-flex flex-column text-white">
 				<div>
 					<h2 className="">{store.planetas[params.uid].name}</h2>
