@@ -23,7 +23,7 @@ export const Navbar = () => {
 							data-toggle="dropdown"
 							aria-haspopup="true"
 							aria-expanded="false">
-							Favoritos {store.favoritos.lenght == 0 ? " " : " " + store.favoritos.lenght}
+							Favoritos ({store.favoritos.length})
 						</button>
 						<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							{store.favoritos.map((favorito, index) => {
